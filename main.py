@@ -160,6 +160,10 @@ def root():
     Returns:
     - The rendered template 'main.html' with the specified parameters.
     """
+    # Check if the player_board is empty
+    board_empty = all(cell == '' for row in player_board for cell in row)
+    if board_empty:
+        return render_template('choose_mode.html')
     return render_template('main.html', board_size=BOARD_SIZE, player_board=player_board)
 
 
